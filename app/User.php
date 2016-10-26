@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Winners_period;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'photo', 'email', 'ip', 'street', 'number', 'zipcode', 'city', 'country', 'time_earned', 'quiz_score', 'game_status', 'is_active', 'is_disqualified', 'is_admin', 'password',
     ];
 
     /**
@@ -26,4 +28,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    
+    public function winners_period()
+    {
+        return $this->hasMany('App\Winners_period', 'winner_id');
+    }
+    
 }
