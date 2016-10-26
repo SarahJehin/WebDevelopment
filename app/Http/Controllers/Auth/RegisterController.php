@@ -48,7 +48,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'photo' => 'required',
+            'street' => 'required|max:255',
+            'number' => 'required|max:255',
+            'zipcode' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -62,8 +69,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        $photo = "no_image";
+        $ip = request()->ip();
+        $time_earned = 0;
+        $quiz_score = 0;
+        $game_status = 0;
+
+        //user is active by default
+        $is_active = 1;
+        $is_disqualified = 0;
+        $is_admin = 0;
+        
+        if(isset($data['photo']))
+        {
+            $destination_path =  base_path() . "/public/images/profile_pics";
+            $image_path = time() . '_' . $data['photo']->getClientOriginalName();
+            $data['photo']->move($destination_path, $image_path);
+            $photo = $image_path;
+        }
+        
+        
         return User::create([
-            'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'photo' => $image_path,
+            'ip' => $ip,
+            'street' => $data['street'],
+            'number' => $data['number'],
+            'zipcode' => $data['zipcode'],
+            'city' => $data['city'],
+            'country' => $data['country'],
+            'time_earned' => $time_earned,
+            'quiz_score' => $quiz_score,
+            'game_status' => $game_status,
+            'is_active' => $is_active,
+            'is_disqualified' => $is_disqualified,
+            'is_admin' => $is_admin,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

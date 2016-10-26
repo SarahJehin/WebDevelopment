@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>AusOpen Tickets</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -47,14 +47,21 @@
            -->
            
            <div>
-               <h1 class="test">Australian Open 2017</h1>
+               <h1>Australian Open 2017</h1>
                <h2>Ben jij erbij?</h2>
-               <div>
-                   <a href="{{ url('/register') }}" class="call_to_action">Doe nu mee!</a>
+               
+               @if(!Auth::user())
+               <div class="not_logged_in">
+                   <div>
+                       <a href="{{ url('/register') }}" class="call_to_action">Doe nu mee!</a>
+                   </div>
+
+                   <div class="account_yet">
+                       Al een account? Ga naar <a href="{{ url('/login') }}">Login</a>
+                   </div>
                </div>
-               <div>
-                   Al een account? Ga naar <a href="{{ url('/login') }}">Login</a>
-               </div>
+               @endif
+               
                
                <div class="winners">
                    Winnaars vorige periode (mag pas zichtbaar zijn als de eerste periode gedaan is

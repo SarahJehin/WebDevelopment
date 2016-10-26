@@ -33,18 +33,38 @@ h1 {
 }
 
 
-.call_to_action {
+
+a.call_to_action {
     border: none;
     background-color: #0091d2;
     color: #fff;
     cursor: pointer;
     padding: 5px 10px;
-    
+    text-decoration: none;
 }
 
-.call_to_action:hover {
+a.call_to_action:hover {
     background-color: #f7981d;
 }
+
+.account_yet {
+    margin-top: 10px;
+}
+
+
+.winners {
+    margin-top: 25px;
+    background-color: #9dd4c1;
+}
+
+.rules {
+    margin-top: 25px;
+    background-color: #d2b0f4;
+}
+
+
+/* CLEARFIX */
+
 
 
 
