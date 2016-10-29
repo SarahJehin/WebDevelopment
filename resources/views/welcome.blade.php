@@ -27,7 +27,10 @@
         -->
        <header>
            <div>
-               <a href="welcome.blade.php"><img src="{{ asset('images/general/logo_blue.png') }}" alt="logo"></a>
+               <a href="{{url('/')}}"><img src="{{ asset('images/general/logo_blue.png') }}" alt="logo"></a>
+           </div>
+           <div>
+               <a href="{{url('/home')}}">Mijn account</a>
            </div>
        </header>
        
@@ -58,6 +61,12 @@
 
                    <div class="account_yet">
                        Al een account? Ga naar <a href="{{ url('/login') }}">Login</a>
+                   </div>
+               </div>
+               @else
+               <div class="logged_in">
+                   <div>
+                       <a href="{{ url('/home') }}" class="call_to_action">Mijn account</a>
                    </div>
                </div>
                @endif
@@ -122,7 +131,7 @@
                            
                            <div>
                                <div class="question">Welke soort tickets betreft het?</div>
-                               <div class="answer">Het gaat om dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017</div>
+                               <div class="answer">Het gaat om dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017. De tickets zijn ter waarde van &euro;60.</div>
                            </div>
                        </div>
                    </div>
@@ -132,6 +141,10 @@
            
            
        </div>
+       
+       <footer>
+           &copy;2017 Australian Open
+       </footer>
         
     </body>
 </html>

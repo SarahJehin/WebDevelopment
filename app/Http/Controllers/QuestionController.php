@@ -69,6 +69,11 @@ class QuestionController extends Controller
     }
     
     
+    public function get_question_overview() {
+        $questions = Question::has('period')->with('period')->get();
+        return view('question_overview', ['questions' => $questions]);
+    }
+    
     public function add_question() {
         
         $periods = Period::all();

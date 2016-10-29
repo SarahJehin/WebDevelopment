@@ -15,6 +15,14 @@ header {
     padding: 5px;
 }
 
+header div:first-child {
+    float: left;
+}
+
+header div+div {
+    float: right;
+}
+
 header img {
     width: 50px;
     height: auto;
@@ -24,8 +32,14 @@ header img {
     width: 60%;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 50px;
 }
 
+footer {
+    background-color: #006a9a;
+    color: #fff;
+    text-align: center;
+}
 
 
 h1 {
@@ -54,7 +68,7 @@ a.call_to_action:hover {
 
 .winners {
     margin-top: 25px;
-    background-color: #9dd4c1;
+    /*background-color: #9dd4c1;*/
 }
 
 .winners div div {
@@ -81,7 +95,10 @@ a.call_to_action:hover {
 
 .rules {
     margin-top: 25px;
-    background-color: #d2b0f4;
+}
+
+.rules strong {
+    color: #f7981d;
 }
 
 .rules .question {
@@ -89,7 +106,12 @@ a.call_to_action:hover {
 }
 
 
+/* logged in */
 
+.navbar-brand img {
+    width: 50px;
+    height: auto;
+}
 
 /* quiz */
 
@@ -130,14 +152,21 @@ a.call_to_action:hover {
 }
 
 
+
+
+
+
+
 /* CLEARFIX */
 
+header::before, header::after,
 .winners div::before, .winners div::after {
     content: "";
     line-height: 0;
     display: table;
 }
 
+header::after,
 .winners div::after {
     clear: both;
 }

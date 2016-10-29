@@ -38,6 +38,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/update_period', 'PeriodController@update_period');
     Route::get('admin/add_question', 'QuestionController@add_question');
     Route::post('admin/create_question', 'QuestionController@create_question');
+    Route::get('admin/participants', 'AdminController@get_participants');
+    Route::get('admin/questions', 'QuestionController@get_question_overview');
+    
+    
+    //testRoute
+    Route::get('test', function()
+               {
+                    return view('test');
+                });
     
 });
 

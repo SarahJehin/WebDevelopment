@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img src="{{ asset('images/general/logo_blue.png') }}" alt="logo">
                     </a>
                 </div>
 
@@ -56,10 +56,18 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->first_name }} <span class="caret"></span>
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if(Auth::user()->is_admin)
+                                    <li>
+                                        <a href="{{url('admin/participants')}}">Deelnemerslijst</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('admin/questions')}}">Vragenlijst</a>
+                                    </li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

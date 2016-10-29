@@ -11,6 +11,16 @@
 
                 <div class="panel-body">
                     
+                    @if(Auth::user()->is_admin)
+                    <div>
+                        <div>
+                            <a href="{{ url('admin/participants') }}">Deelnemerslijst</a>
+                        </div>
+                        <div>
+                            <a href="{{ url('admin/questions') }}">Vragenoverzicht</a>
+                        </div>
+                    </div>
+                    @else
                     <div>
                         <div>
                             <a href="#">Speel het spel!</a>
@@ -22,7 +32,7 @@
                             <a href="{{ url('user/account_info') }}">Mijn account</a>
                         </div>
                     </div>
-                    
+                    @endif
                 </div>
             </div>
         </div>
