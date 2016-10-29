@@ -17,4 +17,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/home', 'HomeController@index');
+    
+    //user
+    Route::get('user/account_info', 'UserController@get_account_info');
+    
+    
+    //question
+    Route::get('user/play_game', 'QuestionController@get_question');
+    Route::post('user/next_question', 'QuestionController@next_question');
+    
+    
+    //admin
+    Route::get('admin/set_periods', 'PeriodController@get_periods');
+    Route::post('admin/update_period', 'PeriodController@update_period');
+    Route::get('admin/add_question', 'QuestionController@add_question');
+    Route::post('admin/create_question', 'QuestionController@create_question');
+    
+});
+

@@ -21,7 +21,7 @@ header img {
 }
 
 .wrapper {
-    width: 1000px;
+    width: 60%;
     margin: 0 auto;
     text-align: center;
 }
@@ -57,15 +57,90 @@ a.call_to_action:hover {
     background-color: #9dd4c1;
 }
 
+.winners div div {
+    width: 30%;
+    height: auto;
+    margin-right: 5%;
+    float: left;
+}
+
+.winners div div:nth-child(3n+3) {
+    margin-right: 0;
+}
+
+.winners div div img {
+    width: 100%;
+    height: auto;
+    -webkit-clip-path: circle(45% at 50% 50%);
+    clip-path: circle(45% at 50% 50%);
+}
+
+.winners .winner_caption {
+    width: 100%;
+}
+
 .rules {
     margin-top: 25px;
     background-color: #d2b0f4;
 }
 
+.rules .question {
+    font-weight: bold;
+}
+
+
+
+
+/* quiz */
+
+.question img {
+    width: 100%;
+    height: auto;
+}
+
+/*
+.question .answers input {
+    display: none;
+}
+
+.question .answers label {
+    width: 100%;
+    background-color: #eee;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.question .answers input[type="radio"]:checked+label {
+    background-color: #0091d2;
+    color: #fff;
+}
+*/
+
+.question .answers button {
+    width: 100%;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.question .answers button:hover {
+    background-color: #0091d2;
+    color: #fff;
+}
+
 
 /* CLEARFIX */
 
+.winners div::before, .winners div::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
 
+.winners div::after {
+    clear: both;
+}
 
 
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -8,7 +10,19 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    
+                    <div>
+                        <div>
+                            <a href="#">Speel het spel!</a>
+                        </div>
+                        <div>
+                            <a href="#">Spelregels</a>
+                        </div>
+                        <div>
+                            <a href="{{ url('user/account_info') }}">Mijn account</a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

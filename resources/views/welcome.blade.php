@@ -64,11 +64,68 @@
                
                
                <div class="winners">
+                   <h3>Vorige winnaars</h3>
                    Winnaars vorige periode (mag pas zichtbaar zijn als de eerste periode gedaan is
+                   
+                   <div>
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div>  
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div> 
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div> 
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div>   
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div>
+                       <div>
+                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           <div class="winner_caption">Finn Harries</div>
+                       </div>
+                   </div>
+                   
                </div>
                
                <div class="rules">
+                   <h3>Spelregels</h3>
                    Hierin komt ne box met de spelregels enz
+                   <div>
+                       <p>
+                           Wil jij ook kans maken op een plaatsje op de Australian Open 2017?
+                       </p>
+                       <h4>Hoe werkt het?</h4>
+                       <div>
+                           Iedereen begint met een basistijd van <strong>60 seconden</strong>.  In die tijd moet je proberen om zoveel mogelijk tennisvragen juist te beantwoorden.  Bij elke vraag heb je <strong>3 mogelijke antwoorden</strong>, waarvan er telkens 1 juist is.  Als je tijd op is, wordt het spel stopgezet en wordt je score bijgehouden.  Herkansen is niet mogelijk, tenzij je een volgende periode terug meespeelt.  Op het einde van elke periode worden de <strong>3 winnaars</strong> met de hoogste score bekend gemaakt en ontvangen zij hun tickets.
+                       </div>
+                       
+                       <h4>FAQ</h4>
+                       <div>
+                           <div>
+                               <div class="question">Hoeveel winnaars zijn er per periode?</div>
+                               <div class="answer">3</div>
+                           </div>
+                           
+                           <div>
+                               <div class="question">Is herkansen mogelijk?</div>
+                               <div class="answer">Niet in dezelfde periode, wel in een andere</div>
+                           </div>
+                           
+                           <div>
+                               <div class="question">Welke soort tickets betreft het?</div>
+                               <div class="answer">Het gaat om dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017</div>
+                           </div>
+                       </div>
+                   </div>
                </div>
                
            </div>
