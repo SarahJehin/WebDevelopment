@@ -23,7 +23,7 @@
                     @else
                     <div>
                         <div>
-                            <a href="#">Speel het spel!</a>
+                            <a href="{{ url('user/play_game') }}">Speel het spel!</a>
                         </div>
                         <div>
                             <a href="#">Spelregels</a>

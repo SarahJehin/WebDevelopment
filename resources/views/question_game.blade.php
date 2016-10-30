@@ -1,3 +1,28 @@
+<?php 
+session_start(); 
+
+//unset($_SESSION['endOfTimer']);
+
+
+if (!isset($_SESSION['time_of_' . Auth::user()->id])){ 
+    $endOfTimer = time() + 30; 
+    $_SESSION['time_of_' . Auth::user()->id] = $endOfTimer; 
+} 
+
+if(($_SESSION['time_of_' . Auth::user()->id] - time()) < 0) { 
+      $timeTilEnd = 0; 
+} 
+else { 
+      $timeTilEnd = $_SESSION['time_of_' . Auth::user()->id] - time(); 
+} 
+
+if($timeTilEnd <= 0) {  
+session_destroy(); 
+} 
+
+?> 
+
+
 @extends('layouts.app')
 
 @section('title', 'Quiz')
@@ -35,6 +60,9 @@
                     @endforeach
                     --}}
                     
+                    <div>
+                        You have <span id="timer"><?php echo $timeTilEnd; ?></span> seconds left.
+                    </div>
                     
                     <div class="question">
                         <div class="image">
@@ -68,4 +96,22 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript"> 
+    var TimeLeft = <?php echo $timeTilEnd; ?>; 
+
+    function countdown() 
+    { 
+          if(TimeLeft > 0) { 
+                TimeLeft -= 1; 
+                document.getElementById('timer').innerHTML = TimeLeft; 
+          } 
+    if(TimeLeft < 1) { 
+                window.location = "http://www.google.com/" 
+          } 
+    } 
+    CountFunc = setInterval(countdown,1000); 
+</script>
+
 @endsection

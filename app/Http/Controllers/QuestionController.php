@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Question;
 use App\Answer;
 use App\Period;
+use Auth;
+use App\User;
 
 class QuestionController extends Controller
 {
@@ -23,7 +25,7 @@ class QuestionController extends Controller
     */
     
     public function get_question() {
-        $question = Question::has('answer')->with('answer')->first();
+        $question = Question::has('answer')->with('answer')->where('period_id', 1)->first();
         $question_array = $this->get_question_array([], 0);
         return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array)]);
     }
@@ -35,6 +37,11 @@ class QuestionController extends Controller
         
         if($answer->is_correct) {
             //dd($answer, "het antwoord is correct, er mag score toegevoegd worden");
+            $user = Auth::user();
+            $user->quiz_score += 5;
+            //dd($user->quiz_score);
+            $user->save();
+            
         }
         else {
             //dd("foutief antwoord....");
@@ -56,7 +63,7 @@ class QuestionController extends Controller
     
     public function get_question_array($array, $id) {
         if($array == []) {
-            $questions = Question::has('answer')->with('answer')->get();
+            $questions = Question::has('answer')->with('answer')->where('period_id', 1)->get();
             foreach($questions as $question) {
                 array_push($array, $question->id);
             }
