@@ -25,14 +25,26 @@ class QuestionController extends Controller
     */
     
     public function get_question() {
-        $question = Question::has('answer')->with('answer')->where('period_id', 1)->first();
+        
+        if(Auth::user()->quiz_score > 0) {
+            $played = true;
+        }
+        else {
+            $played = false;
+        }
+        
+        $periodnr = $this->get_current_period();
+        $question = Question::has('answer')->with('answer')->where('period_id', $periodnr)->first();
         $question_array = $this->get_question_array([], 0);
-        return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array)]);
+        return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array), 'played' => $played]);
     }
     
     public function next_question(Request $request) {
         //
         //dd($request);
+        
+        $played = false;
+        
         $answer = Answer::find($request->answer);
         
         if($answer->is_correct) {
@@ -53,7 +65,7 @@ class QuestionController extends Controller
         //dd($question_arr);
         if($question_array != []) {
             $question = Question::has('answer')->with('answer')->where('id', $question_array[1])->first();
-            return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array)]);
+            return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array), 'played' => $played]);
         }
         else {
             dd("vragen zijn op");
@@ -63,7 +75,10 @@ class QuestionController extends Controller
     
     public function get_question_array($array, $id) {
         if($array == []) {
-            $questions = Question::has('answer')->with('answer')->where('period_id', 1)->get();
+            
+            $periodnr = $this->get_current_period();
+            
+            $questions = Question::has('answer')->with('answer')->where('period_id', $periodnr)->get();
             foreach($questions as $question) {
                 array_push($array, $question->id);
             }
@@ -77,7 +92,7 @@ class QuestionController extends Controller
     
     
     public function get_question_overview() {
-        $questions = Question::has('period')->with('period')->get();
+        $questions = Question::has('period')->with('period')->orderBy('period_id', 'asc')->get();
         return view('question_overview', ['questions' => $questions]);
     }
     
@@ -151,5 +166,107 @@ class QuestionController extends Controller
 
         $answer->save();
     }
+    
+    public function edit_question($id) {
+        //
+        
+        $question = Question::has('answer')->with('answer')->where('id', $id)->first();
+        //dd($question);
+        $periods = Period::all();
+        
+        return view('edit_question', ['question' => $question, 'periods' => $periods]);
+        
+    }
+    
+    
+    public function update_question(Request $request) {
+        //
+        //dd($request);
+        
+        $question = Question::find($request->question_id);
+        
+        
+        $question->question = $request->question;
+        $question->period_id = $request->period_id;
+        
+        
+        $allowed_extensions = ["jpeg", "png"];
+        
+        /* image must be
+        *       checked for extension
+        *       moved to directory on server
+        *       save path in database
+        */
+        
+        if ($request->hasFile("image") && $request->file("image")->isValid()) {
+            
+            $file = $request->file("image");
+            //check whether file extension is valid
+            if (in_array($file->guessClientExtension(), $allowed_extensions)) {
+                //the time stamp will be added to uploaded images to prevent identical names
+                $timestamp = time();
+                //create new file name
+                $new_file_name = $timestamp . $file->getClientOriginalName();
+                //everything ok? -> save image on server
+                $file->move(base_path() . '/public/images/question_images/', $new_file_name);
+                $image = $new_file_name;
+                $question->image = $image;
+            }
+        }
+        
+        
+        
+        $question->save();
+        
+        $this->edit_answer($request->answer_id1, 1, $request->answer1text, $request->answer_is_correct);
+        $this->edit_answer($request->answer_id2, 2, $request->answer2text, $request->answer_is_correct);
+        $this->edit_answer($request->answer_id3, 3, $request->answer3text, $request->answer_is_correct);
+        
+        return redirect('admin/questions')->with('msg', "Vraag succesvol aangepast!");
+    }
+    
+    public function edit_answer($answer_id, $answer_nr, $answertext, $answer_is_correct) {
+        //
+        
+        $answer = Answer::find($answer_id);
+        
+        if($answer_nr == $answer_is_correct) {
+            $is_correct = 1;
+        }
+        else {
+            $is_correct = 0;
+        }
+        
+        $answer->answertext = $answertext;
+        $answer->is_correct = $is_correct;
+
+        $answer->save();
+    }
+    
+    
+    
+    
+    public function get_current_period() {
+        
+        //
+        date_default_timezone_set('Europe/Brussels');
+        //$timezone = date_default_timezone_get();
+        $current_date = date('Y-m-d H:i:s');
+        //$current_date = date('Y-m-d H:i:s', strtotime("2016-11-06"));
+        
+        $periodnr = "";
+        $periods = Period::all();
+        
+        foreach($periods as $period) {
+            if (($current_date >= $period->startdate) && ($current_date <= $period->enddate)) {
+              $periodnr = $period->id;
+            }
+        }
+        
+        return $periodnr;
+        
+        //return view('test2', ['period' => $periodnr]);
+    }
+        
     
 }

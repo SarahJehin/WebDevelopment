@@ -15,11 +15,13 @@
                         <tr>
                             <th>Periode</th>
                             <th>Vraag</th>
+                            <th></th>
                         </tr>
                         @foreach($questions as $question)
                         <tr>
                             <td>{{ $question->period->period_name }}</td>
                             <td>{{ $question->question }}</td>
+                            <td><a href="{{url('admin/edit_question/'.$question->id)}}">Bewerken</a></td>
                         </tr>
                         @endforeach
                     </table>

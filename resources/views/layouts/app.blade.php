@@ -88,6 +88,10 @@
         </nav>
 
         @yield('content')
+        
+        <footer>
+           &copy;2017 Australian Open
+       </footer>
     </div>
 
     <!-- Scripts -->

@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="/css/app.css" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
         <!-- Styles -->
@@ -29,9 +30,42 @@
            <div>
                <a href="{{url('/')}}"><img src="{{ asset('images/general/logo_blue.png') }}" alt="logo"></a>
            </div>
-           <div>
-               <a href="{{url('/home')}}">Mijn account</a>
-           </div>
+           <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if (Auth::user())
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{url('home')}}">Dashboard</a>
+                                    </li>
+                                    @if(Auth::user()->is_admin)
+                                    <li>
+                                        <a href="{{url('admin/participants')}}">Deelnemerslijst</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('admin/questions')}}">Vragenlijst</a>
+                                    </li>
+                                    @endif
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    </ul>
+           
        </header>
        
        <div class="content wrapper">
@@ -107,32 +141,25 @@
                
                <div class="rules">
                    <h3>Spelregels</h3>
-                   Hierin komt ne box met de spelregels enz
+                   @include('rules')
+               </div>
+               
+               <div class="faq">
+                   <h3>FAQ</h3>
                    <div>
-                       <p>
-                           Wil jij ook kans maken op een plaatsje op de Australian Open 2017?
-                       </p>
-                       <h4>Hoe werkt het?</h4>
                        <div>
-                           Iedereen begint met een basistijd van <strong>60 seconden</strong>.  In die tijd moet je proberen om zoveel mogelijk tennisvragen juist te beantwoorden.  Bij elke vraag heb je <strong>3 mogelijke antwoorden</strong>, waarvan er telkens 1 juist is.  Als je tijd op is, wordt het spel stopgezet en wordt je score bijgehouden.  Herkansen is niet mogelijk, tenzij je een volgende periode terug meespeelt.  Op het einde van elke periode worden de <strong>3 winnaars</strong> met de hoogste score bekend gemaakt en ontvangen zij hun tickets.
+                           <div class="question">Hoeveel winnaars zijn er per periode?</div>
+                           <div class="answer">Er zijn 3 winnaars per periode.  Er worden dus in totaal 6 tickets per periode uitgereikt.</div>
                        </div>
                        
-                       <h4>FAQ</h4>
                        <div>
-                           <div>
-                               <div class="question">Hoeveel winnaars zijn er per periode?</div>
-                               <div class="answer">3</div>
-                           </div>
-                           
-                           <div>
-                               <div class="question">Is herkansen mogelijk?</div>
-                               <div class="answer">Niet in dezelfde periode, wel in een andere</div>
-                           </div>
-                           
-                           <div>
-                               <div class="question">Welke soort tickets betreft het?</div>
-                               <div class="answer">Het gaat om dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017. De tickets zijn ter waarde van &euro;60.</div>
-                           </div>
+                           <div class="question">Is herkansen mogelijk?</div>
+                           <div class="answer">Niet in dezelfde periode, wel in een andere periode.</div>
+                       </div>
+                       
+                       <div>
+                           <div class="question">Welke soort tickets betreft het?</div>
+                           <div class="answer">Het gaat om duo dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017. De tickets zijn ter waarde van &euro;60 per stuk (&euro;120 per duoticket).</div>
                        </div>
                    </div>
                </div>
@@ -146,5 +173,6 @@
            &copy;2017 Australian Open
        </footer>
         
+        <script src="/js/app.js"></script>
     </body>
 </html>

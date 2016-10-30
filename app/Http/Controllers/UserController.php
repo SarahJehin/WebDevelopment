@@ -19,4 +19,9 @@ class UserController extends Controller
         return view('user_info');
     }
     
+    
+    public function get_rules() {
+        return view('user_rules');
+    }
+    
 }

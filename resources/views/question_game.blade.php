@@ -31,6 +31,9 @@ session_destroy();
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            
+            @include('extra_nav')
+            
             <div class="panel panel-default">
                 <div class="panel-heading">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
 
@@ -60,6 +63,13 @@ session_destroy();
                     @endforeach
                     --}}
                     
+                    
+                    @if($played)
+                    <div>
+                        Je hebt al meegespeeld.  Volgende periode terug een kans!
+                    </div>
+                    
+                    @else
                     <div>
                         You have <span id="timer"><?php echo $timeTilEnd; ?></span> seconds left.
                     </div>
@@ -87,7 +97,7 @@ session_destroy();
                         </div>
                         
                     </div>
-                    
+                    @endif
                     
                     
                     
@@ -101,6 +111,7 @@ session_destroy();
 <script type="text/javascript"> 
     var TimeLeft = <?php echo $timeTilEnd; ?>; 
 
+    @if(!$played)
     function countdown() 
     { 
           if(TimeLeft > 0) { 
@@ -108,10 +119,11 @@ session_destroy();
                 document.getElementById('timer').innerHTML = TimeLeft; 
           } 
     if(TimeLeft < 1) { 
-                window.location = "http://www.google.com/" 
+                window.location = '{{url("home")}}'; 
           } 
     } 
     CountFunc = setInterval(countdown,1000); 
+    @endif
 </script>
 
 @endsection
