@@ -4,7 +4,6 @@ html, body {
     background-color: #fff;
     color: #636b6f;
     font-family: 'Raleway', sans-serif;
-    font-weight: 100;
 }
 
 /* ausopen blue: #0091d2 */
@@ -96,12 +95,6 @@ a.call_to_action:hover {
 .rules,
 .faq {
     margin-top: 25px;
-    font-family: "Calibri", sans-serif;
-}
-
-.rules h3,
-.faq h3 {
-    font-family: "Raleway", sans-serif;
 }
 
 .rules strong {
@@ -117,13 +110,17 @@ a.call_to_action:hover {
 }
 
 .faq .question {
+    margin-top: 20px;
     font-weight: bold;
+    border-bottom: 1px solid #ddd;
 }
 
 
 
 
 /* logged in */
+
+
 
 .navbar-brand img {
     width: 50px;
@@ -142,6 +139,10 @@ ul.nav_extra li {
     width: 24.99%;
     border-right: 1px solid #00a7f2;
     text-align: center;
+}
+
+ul.nav_extra.admin li {
+    width: 19.99%;
 }
 
 ul.nav_extra li:last-child {
@@ -187,6 +188,14 @@ ul.nav_extra li a:hover {
 }
 */
 
+.question .question {
+    font-weight: bold;
+}
+
+.question .answers div {
+    margin-bottom: 1px;
+}
+
 .question .answers button {
     width: 100%;
     background-color: #eee;
@@ -222,6 +231,17 @@ ul.nav_extra li a:hover {
     padding: 0px 5px;
 }
 
+.user_info form input[type="submit"] {
+    width: 100%;
+    background-color: #0091d2;
+    color: #fff;
+    border: none;
+}
+
+.user_info form input[type="submit"]:hover {
+    background-color: #f7981d;
+}
+
 .user_info div img {
     width: 100%;
     height: auto;
@@ -230,12 +250,32 @@ ul.nav_extra li a:hover {
 }
 
 
+.participant div .info {
+    padding: 2px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.participant div div:hover {
+    background-color: #f5f5f5;
+}
+
+.participant div div div {
+    float: left;
+}
+
+.participant div div div:first-child {
+    width: 150px;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
 /* CLEARFIX */
 
 header::before, header::after,
 .winners div::before, .winners div::after,
 ul.nav_extra::before, ul.nav_extra::after,
-.user_info form div::before, .user_info form div::after {
+.user_info form div::before, .user_info form div::after,
+.participant div div::before, .participant div div::after {
     content: "";
     line-height: 0;
     display: table;
@@ -244,7 +284,8 @@ ul.nav_extra::before, ul.nav_extra::after,
 header::after,
 .winners div::after,
 ul.nav_extra::after,
-.user_info form div::after {
+.user_info form div::after,
+.participant div div::after {
     clear: both;
 }
 

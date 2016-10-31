@@ -35,7 +35,7 @@ session_destroy();
             @include('extra_nav')
             
             <div class="panel panel-default">
-                <div class="panel-heading">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
+                <div class="panel-heading">Quiz</div>
 
                 <div class="panel-body">
                     

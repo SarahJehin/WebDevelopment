@@ -6,6 +6,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            
+            @include('extra_nav')
+           
             <div class="panel panel-default">
                 <div class="panel-heading">Deelnemerslijst</div>
 
@@ -14,11 +17,22 @@
                     @if(Auth::user()->is_admin)
                     <div>
                         <table class="table table-hover">
+                            <tr>
+                                <th>Naam</th>
+                                <th>Score</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
                             @foreach($participants as $participant)
                             <tr>
-                                <td>{{ $participant->first_name }} {{ $participant->last_name }}</td>
+                                <td><a href="{{url('admin/participant_details/'.$participant->id)}}">{{ $participant->first_name }} {{ $participant->last_name }}</a></td>
                                 <td>{{ $participant->quiz_score }}</td>
-                                <td>Diskwalificeren!</td>
+                                @if(!$participant->is_disqualified)
+                                <td><a href="{{url('admin/disqualify/'.$participant->id)}}">Diskwalificeren</a></td>
+                                @else
+                                <td><a href="{{url('admin/requalify/'.$participant->id)}}">Rekwalificeren</a></td>
+                                @endif
+                                <td><a href="{{url('admin/delete_participant/'.$participant->id)}}">Verwijderen</a></td>
                             </tr>
                             @endforeach
                         </table>

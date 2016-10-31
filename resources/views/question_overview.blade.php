@@ -6,12 +6,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            
+            @include('extra_nav')
+            
             <div class="panel panel-default">
                 <div class="panel-heading">Vragenoverzicht</div>
 
                 <div class="panel-body">
                     
-                    <table class="table">
+                    <table class="table table-hover">
                         <tr>
                             <th>Periode</th>
                             <th>Vraag</th>

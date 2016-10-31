@@ -18,7 +18,8 @@
                     <div class="user_info">
                         
                         <div class="col-md-8">
-                            <form method="POST" action="#" enctype="multipart/form-data">
+                            <form method="POST" action="{{url('user/update_account')}}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
                                 <div>
                                     <label>Voornaam:</label>
                                     <input type="text" name="first_name" id="first_name" value="{{ Auth::user()->first_name }}">
@@ -54,6 +55,9 @@
                                 <div>
                                     <label>Foto:</label>
                                     <input type="file" name="image" id="image" value="{{ Auth::user()->image }}">
+                                </div>
+                                <div>
+                                    <input type="submit" value="Aanpassen">
                                 </div>
                             </form>
                         </div>
