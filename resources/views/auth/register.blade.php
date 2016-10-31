@@ -5,118 +5,125 @@
 @section('content')
 <div class="container">
     
-    <div>
-        Registreer je nu en maak kans op 5 duo-tickets voor de Australian Open van 2017!
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registreer</div>
+                <div class="panel-body">
+                    <form class="register_form" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+
+
+                        <div>
+                            <label for="first_name">Voornaam</label>
+                            <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}" required autofocus>
+                            @if ($errors->has('first_name'))
+                                    <strong>{{ $errors->first('first_name') }}</strong>
+                            @endif
+                        </div>
+
+
+                        <div>
+                            <label for="last_name">Achternaam</label>
+                            <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}" required autofocus>
+                            @if ($errors->has('last_name'))
+                                <strong>{{ $errors->first('last_name') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="email" >E-Mail</label>
+                            <input id="email" type="email"  name="email" value="{{ old('email') }}" required>
+                            @if ($errors->has('email'))
+                                <strong>{{ $errors->first('email') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="street">Straat</label>
+                            <input id="street" type="text" name="street" value="{{ old('street') }}" required autofocus>
+                            @if ($errors->has('street'))
+                                <strong>{{ $errors->first('street') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="number">Nummer</label>
+                            <input id="number" type="text" name="number" value="{{ old('number') }}" required autofocus>
+                            @if ($errors->has('number'))
+                                <strong>{{ $errors->first('number') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="zipcode">Postcode</label>
+                            <input id="zipcode" type="text" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
+                            @if ($errors->has('zipcode'))
+                                <strong>{{ $errors->first('zipcode') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="city">Stad</label>
+                            <input id="city" type="text" name="city" value="{{ old('city') }}" required autofocus>
+                            @if ($errors->has('city'))
+                                <strong>{{ $errors->first('city') }}</strong>
+                            @endif
+                        </div>
+
+                        <div>
+                            <label for="country">Land</label>
+                            <input id="country" type="text" name="country" value="{{ old('country') }}" required autofocus>
+                            @if ($errors->has('country'))
+                                <strong>{{ $errors->first('country') }}</strong>
+                            @endif
+                        </div>
+
+
+                        <div>
+                            <label for="photo">Foto</label>
+                            <input type="file" id="photo" name="photo">
+                            @if ($errors->has('photo'))
+                                <strong>{{ $errors->first('photo') }}</strong>
+                            @endif
+                        </div>
+
+
+                        <div>
+                            <label for="password">Password</label>
+                            <input id="password" type="password"  name="password" required>
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+
+
+                         <div>
+                             <label for="password-confirm" >Confirm Password</label>
+                             <input id="password-confirm" type="password"  name="password_confirmation" required>
+                             @if ($errors->has('password_confirmation'))
+                                     <strong>{{ $errors->first('password_confirmation') }}</strong>
+                             @endif
+                         </div>
+
+
+                            <button type="submit">
+                                Speel mee!
+                            </button>
+
+                </form>
+                    
+                </div>
+            </div>
+        </div>
     </div>
+</div>
     
-    <form  role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
-        {{ csrf_field() }}
-
-
-            <div>
-                <label for="first_name">Voornaam</label>
-                <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}" required autofocus>
-                @if ($errors->has('first_name'))
-                        <strong>{{ $errors->first('first_name') }}</strong>
-                @endif
-            </div>
-            
-
-            <div>
-                <label for="last_name">Achternaam</label>
-                <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}" required autofocus>
-                @if ($errors->has('last_name'))
-                    <strong>{{ $errors->first('last_name') }}</strong>
-                @endif
-            </div>
-            
-            <div>
-                <label for="email" >E-Mail</label>
-                <input id="email" type="email"  name="email" value="{{ old('email') }}" required>
-                @if ($errors->has('email'))
-                    <strong>{{ $errors->first('email') }}</strong>
-                @endif
-            </div>
-
-            <div>
-                <label for="street">Straat</label>
-                <input id="street" type="text" name="street" value="{{ old('street') }}" required autofocus>
-                @if ($errors->has('street'))
-                    <strong>{{ $errors->first('street') }}</strong>
-                @endif
-            </div>
-            
-            <div>
-                <label for="number">Nummer</label>
-                <input id="number" type="text" name="number" value="{{ old('number') }}" required autofocus>
-                @if ($errors->has('number'))
-                    <strong>{{ $errors->first('number') }}</strong>
-                @endif
-            </div>
-            
-            <div>
-                <label for="zipcode">Postcode</label>
-                <input id="zipcode" type="text" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
-                @if ($errors->has('zipcode'))
-                    <strong>{{ $errors->first('zipcode') }}</strong>
-                @endif
-            </div>
-            
-            <div>
-                <label for="city">Stad</label>
-                <input id="city" type="text" name="city" value="{{ old('city') }}" required autofocus>
-                @if ($errors->has('city'))
-                    <strong>{{ $errors->first('city') }}</strong>
-                @endif
-            </div>
-
-            <div>
-                <label for="country">Land</label>
-                <input id="country" type="text" name="country" value="{{ old('country') }}" required autofocus>
-                @if ($errors->has('country'))
-                    <strong>{{ $errors->first('country') }}</strong>
-                @endif
-            </div>
-
-
-            <div>
-                <label for="photo">Foto <span>(Deze foto wordt gepubliceerd als je één van de winnaars bent)</span></label>
-                <input type="file" id="photo" name="photo">
-                @if ($errors->has('photo'))
-                    <strong>{{ $errors->first('photo') }}</strong>
-                @endif
-            </div>
-            
-
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password"  name="password" required>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-            
-
-
-             <div>
-                 <label for="password-confirm" >Confirm Password</label>
-                 <input id="password-confirm" type="password"  name="password_confirmation" required>
-                 @if ($errors->has('password_confirmation'))
-                         <strong>{{ $errors->first('password_confirmation') }}</strong>
-                 @endif
-             </div>
-
-            
-
-
-
-                <button type="submit">
-                    Speel mee!
-                </button>
-
-    </form>
+    
+    
     
     <!--
     <div class="row">

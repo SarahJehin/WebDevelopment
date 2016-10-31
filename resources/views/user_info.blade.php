@@ -64,6 +64,14 @@
                         
                         <div class="col-md-4">
                             <img src="../images/profile_pics/{{  Auth::user()->photo }}" alt="logo">
+                            
+                            <div class="score">
+                                Mijn score : 
+                                <div class="amount">
+                                    {{ Auth::user()->quiz_score }}
+                                </div>
+                            </div>
+                            
                         </div>
                         
                         
@@ -72,7 +80,8 @@
                     
                     
                 </div>
-            </div> 
+            </div>
+            {{--
             <div class="panel panel-default">
                 <div class="panel-heading">Score en gewonnen tickets</div>
                 
@@ -84,6 +93,7 @@
                 </div>
                 
             </div>
+            --}}
         </div>
     </div>
 </div>

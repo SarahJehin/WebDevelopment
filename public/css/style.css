@@ -82,7 +82,7 @@ a.call_to_action:hover {
 }
 
 .winners div .winner .img {
-    height: 250px;
+    height: 240px;
     overflow: hidden;
     -webkit-clip-path: circle(45% at 50% 50%);
     clip-path: circle(45% at 50% 50%);
@@ -121,6 +121,30 @@ a.call_to_action:hover {
     border-bottom: 1px solid #ddd;
 }
 
+
+.register_form label {
+    width: 25%;
+}
+
+.register_form input {
+    width: 74.2%;
+    padding: 2px 5px;
+}
+
+.register_form input[type="file"] {
+    display: inline;
+}
+
+.register_form button[type="submit"] {
+    width: 100%;
+    background-color: #0091d2;
+    color: #fff;
+    border: none;
+}
+
+.register_form button[type="submit"]:hover {
+    background-color: #f7981d;
+}
 
 
 
@@ -253,6 +277,18 @@ ul.nav_extra li a:hover {
     height: auto;
     -webkit-clip-path: circle(48% at 50% 50%);
     clip-path: circle(48% at 50% 50%);
+}
+
+.user_info .score {
+    margin-top: 25px;
+    text-align: center;
+    border: 1px #d3e0e9 solid;
+    border-radius: 5px;
+}
+
+.user_info .score .amount {
+    font-weight: bold;
+    font-size: 1.8em;
 }
 
 

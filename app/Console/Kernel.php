@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DB;
 use \App\Console\Commands\addUser;
+use \App\Period;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,12 +32,24 @@ class Kernel extends ConsoleKernel
         
         //$schedule->command('add:winners')->everyMinute();
         
-        $schedule->command('add:winners')->->cron('32 18 31 10 * 2016');
+        //$schedule->command('add:winners')->cron('00 18 31 10 * *');
         
         /*$schedule->command('test:test')
          ->everyMinute()
          ->sendOutputTo(base_path() . '/public/output_files/test.txt');
          */
+        
+        $periods = Period::all();
+        
+        foreach($periods as $period) {
+            
+            $enddate_month = explode('-', $period->enddate)[1];
+            $enddate_day = explode(' ', explode('-', $period->enddate)[2])[0];
+            //echo("maand: " . $enddate_month . " en dag " . $enddate_day . "<br>");
+            $schedule->command('add:winners')->cron('28 19 ' . $enddate_day . ' ' . $enddate_month . ' * *');
+        }
+        
+        
     }
 
     /**

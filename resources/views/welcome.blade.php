@@ -100,7 +100,6 @@
                
                <div class="winners">
                    <h3>Vorige winnaars</h3>
-                   Winnaars vorige periode (mag pas zichtbaar zijn als de eerste periode gedaan is
                    
                    <div>
                        @foreach($winners_periods as $winner)
