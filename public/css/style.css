@@ -311,6 +311,30 @@ ul.nav_extra li a:hover {
     font-weight: bold;
 }
 
+#update_period div {
+    margin-bottom: 5px;
+}
+
+#update_period div label {
+    width: 20%;
+}
+
+#update_period div input {
+    border: 1px #d3e0e9 solid;
+    padding: 2px 5px;
+    width: 28.5%;
+}
+
+#update_period div input+input {
+    width: 20%;
+}
+
+#update_period div input[type="submit"] {
+    width: 70%;
+    background-color: #0091d2;
+    color: #fff;
+}
+
 /* CLEARFIX */
 
 header::before, header::after,
