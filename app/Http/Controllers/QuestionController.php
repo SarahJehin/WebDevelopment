@@ -92,7 +92,7 @@ class QuestionController extends Controller
     
     
     public function get_question_overview() {
-        $questions = Question::has('period')->with('period')->orderBy('period_id', 'asc')->get();
+        $questions = Question::has('period')->with('period')->orderBy('period_id', 'asc')->paginate(10);
         return view('question_overview', ['questions' => $questions]);
     }
     

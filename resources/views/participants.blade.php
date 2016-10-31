@@ -37,6 +37,7 @@
                             @endforeach
                         </table>
                         
+                        {{ $participants->links() }}
                         
                     </div>
                     @else

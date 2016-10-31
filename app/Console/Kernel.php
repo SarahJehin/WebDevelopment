@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-         '\App\Console\Commands\addUser'
+         '\App\Console\Commands\AddWinners',
+         '\App\Console\Commands\Test'
     ];
 
     /**
@@ -27,18 +28,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
         
+        //$schedule->command('add:winners')->everyMinute();
         
+        $schedule->command('add:winners')->->cron('32 18 31 10 * 2016');
         
-         /*$schedule->call(function () {
-            DB::table('users')->insert(
-                ['first_name' => 'John', 'last_name' => 'Doe', 'email' => 'johndoe@test.com', 'phone' => '0123456789']
-            );
-        })->everyMinute();*/
-        
-        //$schedule->command('user:add')->everyMinute();
+        /*$schedule->command('test:test')
+         ->everyMinute()
+         ->sendOutputTo(base_path() . '/public/output_files/test.txt');
+         */
     }
 
     /**

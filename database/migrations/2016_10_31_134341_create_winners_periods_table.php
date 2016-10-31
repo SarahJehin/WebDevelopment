@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWinnersPeriodTable extends Migration
+class CreateWinnersPeriodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWinnersPeriodTable extends Migration
      */
     public function up()
     {
-        Schema::create('winners_period', function (Blueprint $table) {
+        Schema::create('winners_periods', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('period_id')->index();
             $table->integer('winner_id')->index();
@@ -30,6 +30,6 @@ class CreateWinnersPeriodTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('winners_period');
+        Schema::dropIfExists('winners_periods');
     }
 }

@@ -103,30 +103,27 @@
                    Winnaars vorige periode (mag pas zichtbaar zijn als de eerste periode gedaan is
                    
                    <div>
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                       @foreach($winners_periods as $winner)
+                       <div class="winner">
+                           <div class="img">
+                               <img src="{{ URL::to('/') }}/images/profile_pics/{{$winner->user->photo}}" alt="winner" />
+                           </div>
+                           <div class="winner_caption">{{$winner->user->first_name}} {{$winner->user->last_name}}</div>
+                       </div>
+                       @endforeach
+                       <div class="winner">
+                           <div class="img">
+                               <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           </div>
+                           <div class="winner_caption">Finn Harries</div>
+                       </div>
+                       <div class="winner">
+                           <div class="img">
+                               <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
+                           </div>
                            <div class="winner_caption">Finn Harries</div>
                        </div>  
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           <div class="winner_caption">Finn Harries</div>
-                       </div> 
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           <div class="winner_caption">Finn Harries</div>
-                       </div> 
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           <div class="winner_caption">Finn Harries</div>
-                       </div>   
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           <div class="winner_caption">Finn Harries</div>
-                       </div>
-                       <div>
-                           <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           <div class="winner_caption">Finn Harries</div>
-                       </div>
+                       
                    </div>
                    
                </div>

@@ -70,22 +70,28 @@ a.call_to_action:hover {
     /*background-color: #9dd4c1;*/
 }
 
-.winners div div {
+.winners div .winner {
     width: 30%;
     height: auto;
     margin-right: 5%;
     float: left;
 }
 
-.winners div div:nth-child(3n+3) {
+.winners div .winner:nth-child(3n+3) {
     margin-right: 0;
+}
+
+.winners div .winner .img {
+    height: 250px;
+    overflow: hidden;
+    -webkit-clip-path: circle(45% at 50% 50%);
+    clip-path: circle(45% at 50% 50%);
 }
 
 .winners div div img {
     width: 100%;
-    height: auto;
-    -webkit-clip-path: circle(45% at 50% 50%);
-    clip-path: circle(45% at 50% 50%);
+    height: auto; /*dit zou eigenlijk op auto moeten staan*/
+    
 }
 
 .winners .winner_caption {
@@ -291,46 +297,46 @@ ul.nav_extra::after,
 
 
 
-/* oorspronkelijke styling */
-/*
-.full-height {
-    height: 100vh;
+@media screen and (max-width: 1200px) {
+    .winners div .winner .img {
+        height: 160px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
 }
 
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+
+@media screen and (max-width: 800px) {
+    .winners div .winner .img {
+        height: 120px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
 }
 
-.position-ref {
-    position: relative;
+
+@media screen and (max-width: 500px) {
+    .winners div .winner .img {
+        height: 80px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
 }
 
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-}
 
-.content {
-    text-align: center;
-}
 
-.title {
-    font-size: 84px;
-}
 
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
 
-.m-b-md {
-    margin-bottom: 30px;
-}*/
+
+
+
+
+
+
+
+
+
+

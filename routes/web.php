@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'WelcomeController@welcome');
+Route::get('test2', 'WelcomeController@test');
 
 Auth::routes();
 
@@ -55,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
                {
                     return view('test');
                 });
-    Route::get('test2', 'QuestionController@get_current_period');
+    
     
 });
 

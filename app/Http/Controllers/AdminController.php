@@ -15,7 +15,7 @@ class AdminController extends Controller
     
     public function get_participants() {
         //
-        $participants = User::where('is_admin', 0)->where('is_active', 1)->get();
+        $participants = User::where('is_admin', 0)->where('is_active', 1)->paginate(15);
         
         return view('participants', ['participants' => $participants]);
     }

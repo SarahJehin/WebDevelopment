@@ -32,7 +32,7 @@ class User extends Authenticatable
     
     public function winners_period()
     {
-        return $this->hasMany('App\Winners_period', 'winner_id');
+        return $this->hasMany('App\Winners_Periods', 'winner_id');
     }
     
 }

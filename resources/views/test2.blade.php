@@ -8,7 +8,9 @@
     
     
     <div>
-        {{ $period }}
+        {{--{{ $period }}
+        {{$winners}}--}}
+        testttttt
     </div>
     
 </body>
