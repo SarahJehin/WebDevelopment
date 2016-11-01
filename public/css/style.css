@@ -45,7 +45,11 @@ h1 {
     color: #0091d2;
 }
 
-
+.nav.navbar-nav .dropdown .dropdown-toggle.welcome {
+    padding: 0;
+    padding-top: 5px;
+    padding-right: 20px;
+}
 
 a.call_to_action {
     border: none;
@@ -291,6 +295,16 @@ ul.nav_extra li a:hover {
     font-size: 1.8em;
 }
 
+/* admin */
+
+.msg_info {
+    background-color: #8ce6a8;
+    padding: 2px 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* participant_info */
 
 .participant div .info {
     padding: 2px 0;
@@ -335,6 +349,76 @@ ul.nav_extra li a:hover {
     color: #fff;
 }
 
+
+/* edit question */
+.add_question label,
+.edit_question label {
+    width: 25%;
+}
+
+.add_question form div,
+.edit_question form div {
+    margin-bottom: 5px;
+}
+
+.add_question input,
+.add_question select,
+.edit_question input,
+.edit_question select {
+    width: 65%;
+    padding: 2px 5px;
+    border: 1px #d3e0e9 solid;
+}
+
+.add_question select,
+.edit_question select {
+    width: 25%;
+}
+
+.add_question input[type="radio"],
+.edit_question input[type="radio"] {
+    width: 5%;
+}
+
+.add_question input[type="file"],
+.edit_question input[type="file"] {
+    display: inline;
+}
+
+.add_question input[name="question"],
+.add_question input[type="file"],
+.edit_question input[name="question"],
+.edit_question input[type="file"] {
+    width: 70%;
+}
+
+.add_question div input[type="submit"], 
+.edit_question div input[type="submit"] {
+    width: 95%;
+    background-color: #0091d2;
+    color: #fff;
+}
+
+.add_question div input[type="submit"]:hover, 
+.edit_question div input[type="submit"]:hover {
+    background-color: #f7981d;
+}
+
+.edit_question .delete_question {
+    display: block;
+    width: 95%;
+    border: 1px #d99 solid;
+    color: #d99;
+    text-align: center;
+}
+
+.edit_question .delete_question:hover {
+    text-decoration: none;
+    background-color: #fbb;
+    color: #b55;
+}
+
+
 /* CLEARFIX */
 
 header::before, header::after,
@@ -368,6 +452,12 @@ ul.nav_extra::after,
 
 
 @media screen and (max-width: 800px) {
+    
+    .nav.navbar-nav.navbar-right {
+        width: 120px;
+        float: right;
+    }
+    
     .winners div .winner .img {
         height: 120px;
         overflow: hidden;
@@ -377,6 +467,34 @@ ul.nav_extra::after,
 }
 
 
+@media screen and (max-width: 700px) {
+    .winners div .winner .img {
+        height: 100px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
+    
+    /* logged in */
+    ul.nav_extra li {
+        float: none;
+        clear: both;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #00a7f2;
+    }
+    
+    ul.nav_extra.admin li {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
+    
+    ul.nav_extra li a {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .winners div .winner .img {
         height: 80px;
@@ -384,6 +502,21 @@ ul.nav_extra::after,
         -webkit-clip-path: circle(45% at 50% 50%);
         clip-path: circle(45% at 50% 50%);
     }
+    
+    #update_period div label {
+        width: 100%;
+    }
+    
+    #update_period div input {
+        width: 100%;
+    }
+    
+    #update_period div input+input {
+        width: 100%;
+    }
+}
+
+    
 }
 
 

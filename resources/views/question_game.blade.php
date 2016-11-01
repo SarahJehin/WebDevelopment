@@ -42,9 +42,11 @@ session_destroy();
                     {{--
                     @foreach($questions as $question)
                     <div class="question">
+                        @if($question->image != "")
                         <div class="image">
                             <img src="{{ asset('images/question_images/' . $question->image) }}" alt="question_img">
                         </div>
+                        @endif
                         
                         <div class="question">
                             {{ $question->question }}

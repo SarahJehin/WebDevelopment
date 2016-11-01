@@ -23,7 +23,7 @@
                             </div>
                         @endif
                         
-                        <div>
+                        <div class="add_question">
                             <form method="POST" action="{{ url('admin/create_question') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div>
@@ -32,7 +32,7 @@
                                 </div>
                                 <div>
                                     <label for="image">Afbeelding:</label>
-                                    <input type="file" name="image" id="image">
+                                    <input type="file" name="image" id="image" required>
                                 </div>
                                 <div class="answers">
                                     <div>

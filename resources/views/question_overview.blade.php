@@ -14,6 +14,12 @@
 
                 <div class="panel-body">
                     
+                    @if (session('msg'))
+                        <div class="msg_info">
+                            {{ session('msg') }}
+                        </div>
+                    @endif
+                    
                     <table class="table table-hover">
                         <tr>
                             <th>Periode</th>

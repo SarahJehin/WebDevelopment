@@ -39,6 +39,8 @@ class Kernel extends ConsoleKernel
          ->sendOutputTo(base_path() . '/public/output_files/test.txt');
          */
         
+        //$schedule->command('add:winners')->cron('50 12 01 11 * *');
+        
         $periods = Period::all();
         
         foreach($periods as $period) {
@@ -46,7 +48,7 @@ class Kernel extends ConsoleKernel
             $enddate_month = explode('-', $period->enddate)[1];
             $enddate_day = explode(' ', explode('-', $period->enddate)[2])[0];
             //echo("maand: " . $enddate_month . " en dag " . $enddate_day . "<br>");
-            $schedule->command('add:winners')->cron('28 19 ' . $enddate_day . ' ' . $enddate_month . ' * *');
+            $schedule->command('add:winners')->cron('40 22 ' . $enddate_day . ' ' . $enddate_month . ' * *');
         }
         
         

@@ -23,7 +23,7 @@
                             </div>
                         @endif
                         
-                        <div>
+                        <div class="edit_question">
                             <form method="POST" action="{{ url('admin/update_question') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div>
@@ -71,6 +71,9 @@
                                 </div>
                                 
                             </form>
+                            
+                            <a class="delete_question" href="{{ url('admin/delete_question/'.$question->id) }}">Deze vraag verwijderen</a>
+                            
                         </div>
                         
                     </div>

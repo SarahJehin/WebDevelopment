@@ -17,6 +17,7 @@
 
 Route::get('/', 'WelcomeController@welcome');
 Route::get('test2', 'WelcomeController@test');
+Route::get('mail', 'WelcomeController@mail');
 
 Auth::routes();
 
@@ -45,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/create_question', 'QuestionController@create_question');
     Route::get('admin/edit_question/{id}', 'QuestionController@edit_question');
     Route::post('admin/update_question', 'QuestionController@update_question');
+    Route::get('admin/delete_question/{id}', 'QuestionController@delete_question');
     Route::get('admin/participants', 'AdminController@get_participants');
     Route::get('admin/participant_details/{id}', 'AdminController@participant_details');
     Route::get('admin/disqualify/{id}', 'AdminController@disqualify_participant');

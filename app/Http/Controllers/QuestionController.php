@@ -34,7 +34,7 @@ class QuestionController extends Controller
         }
         
         $periodnr = $this->get_current_period();
-        $question = Question::has('answer')->with('answer')->where('period_id', $periodnr)->first();
+        $question = Question::has('answer')->with('answer')->where('is_active', 1)->where('period_id', $periodnr)->first();
         $question_array = $this->get_question_array([], 0);
         return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array), 'played' => $played]);
     }
@@ -64,7 +64,7 @@ class QuestionController extends Controller
         $question_array = $this->get_question_array($prev_arr, $request->question_id);
         //dd($question_arr);
         if($question_array != []) {
-            $question = Question::has('answer')->with('answer')->where('id', $question_array[1])->first();
+            $question = Question::has('answer')->with('answer')->where('is_active', 1)->where('id', $question_array[1])->first();
             return view('question_game', ['question' => $question, 'question_array' => implode(",", $question_array), 'played' => $played]);
         }
         else {
@@ -78,7 +78,7 @@ class QuestionController extends Controller
             
             $periodnr = $this->get_current_period();
             
-            $questions = Question::has('answer')->with('answer')->where('period_id', $periodnr)->get();
+            $questions = Question::has('answer')->with('answer')->where('is_active', 1)->where('period_id', $periodnr)->get();
             foreach($questions as $question) {
                 array_push($array, $question->id);
             }
@@ -92,15 +92,25 @@ class QuestionController extends Controller
     
     
     public function get_question_overview() {
-        $questions = Question::has('period')->with('period')->orderBy('period_id', 'asc')->paginate(10);
-        return view('question_overview', ['questions' => $questions]);
+        $questions = Question::has('period')->with('period')->where('is_active', 1)->orderBy('period_id', 'asc')->paginate(10);
+        if(Auth::user()->is_admin) {
+            return view('question_overview', ['questions' => $questions]);
+        }
+        else {
+            abort(404);
+        }
     }
     
     public function add_question() {
         
         $periods = Period::all();
         
-        return view('create_question', ['periods' => $periods]);
+        if(Auth::user()->is_admin) {
+            return view('create_question', ['periods' => $periods]);
+        }
+        else {
+            abort(404);
+        }
     }
     
     public function create_question(Request $request) {
@@ -174,8 +184,12 @@ class QuestionController extends Controller
         //dd($question);
         $periods = Period::all();
         
-        return view('edit_question', ['question' => $question, 'periods' => $periods]);
-        
+        if(Auth::user()->is_admin) {
+            return view('edit_question', ['question' => $question, 'periods' => $periods]);
+        }
+        else {
+            abort(404);
+        }
     }
     
     
@@ -247,8 +261,6 @@ class QuestionController extends Controller
     
     
     public function get_current_period() {
-        
-        //
         date_default_timezone_set('Europe/Brussels');
         //$timezone = date_default_timezone_get();
         $current_date = date('Y-m-d H:i:s');
@@ -262,11 +274,19 @@ class QuestionController extends Controller
               $periodnr = $period->id;
             }
         }
-        
         return $periodnr;
-        
-        //return view('test2', ['period' => $periodnr]);
     }
+    
+    
+    public function delete_question($id) {
+        //
         
+        $question = Question::find($id);
+        
+        $question->is_active = 0;
+        $question->save();
+        
+        return redirect('admin/questions')->with('msg', "Vraag succesvol verwijderd!");
+    }
     
 }

@@ -34,7 +34,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::user())
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle welcome" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
                                 </a>
 
@@ -109,19 +109,7 @@
                            </div>
                            <div class="winner_caption">{{$winner->user->first_name}} {{$winner->user->last_name}}</div>
                        </div>
-                       @endforeach
-                       <div class="winner">
-                           <div class="img">
-                               <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           </div>
-                           <div class="winner_caption">Finn Harries</div>
-                       </div>
-                       <div class="winner">
-                           <div class="img">
-                               <img src="{{ URL::to('/') }}/images/profile_pics/1477646100_profile_pic_lucas.jpg" alt="winner" />
-                           </div>
-                           <div class="winner_caption">Finn Harries</div>
-                       </div>  
+                       @endforeach 
                        
                    </div>
                    
@@ -148,6 +136,18 @@
                        <div>
                            <div class="question">Welke soort tickets betreft het?</div>
                            <div class="answer">Het gaat om duo dagtickets voor volwassenen voor de Rod Laver Arena op woensdag 18 januari 2017. De tickets zijn ter waarde van &euro;60 per stuk (&euro;120 per duoticket).</div>
+                       </div>
+                       
+                       <div>
+                           <div class="question">Wanneer loopt welke periode?</div>
+                           <div class="answer">
+                               <p>Dit zijn de 4 periodes waarover de wedstrijd loopt:</p>
+                               @foreach($periods as $period)
+                               <div>
+                                   {{ $period->period_name }}: {{ substr($period->startdate, 0, 10) }} tot {{ substr($period->enddate, 0, 10) }}
+                               </div>
+                               @endforeach
+                           </div>
                        </div>
                    </div>
                </div>

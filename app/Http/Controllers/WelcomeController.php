@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Winners_Periods;
 use App\User;
 use App\Period;
+use Mail;
 
 class WelcomeController extends Controller
 {
@@ -16,10 +17,10 @@ class WelcomeController extends Controller
     public function welcome() {
         //
         $winners_periods = Winners_Periods::has('user')->with('user')->has('period')->with('period')->get();
-        
+        $periods = Period::all();
         //dd($winners_periods);
         
-        return view('welcome', ['winners_periods' => $winners_periods]);
+        return view('welcome', ['winners_periods' => $winners_periods, 'periods' => $periods]);
     }
     
     public function test() {
@@ -27,6 +28,7 @@ class WelcomeController extends Controller
         
         //dd($winners);
         
+        //dd(phpinfo());
         
         $periods = Period::all();
         
@@ -39,6 +41,15 @@ class WelcomeController extends Controller
         
         //return view('test2', ['period' => "idk", 'winners' => $winners]);
         
+    }
+    
+    public function mail() {
+        $user = User::find(1)->toArray();
+        Mail::send('emails.winners_mail', ['user' => $user], function($message) use ($user) {
+            $message->to('sarah.jehin@belgacom.net');
+            $message->subject('Mailgun Testing E-mail');
+        });
+        dd('Mail Send Successfully');
     }
     
 }

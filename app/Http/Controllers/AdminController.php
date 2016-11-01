@@ -24,7 +24,12 @@ class AdminController extends Controller
         //
         $participant = User::find($id);
         //dd($participant);
-        return view('participant_info', ['participant' => $participant]);
+        if(Auth::user()->is_admin && $participant) {
+            return view('participant_info', ['participant' => $participant]);
+        }
+        else {
+            abort(404);
+        }
     }
     
     
@@ -51,6 +56,8 @@ class AdminController extends Controller
         $deleted_participant = User::find($id);
         $deleted_participant->is_active = 0;
         $deleted_participant->save();
+        
+        return redirect('admin/participants');
     }
     
 }

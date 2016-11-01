@@ -41,7 +41,7 @@ class AddWinners extends Command
      */
     public function handle()
     {
-        //
+        //add winners to winners_table
         $winners = User::where('quiz_score', '>', 0)->where('is_disqualified', 0)->orderBy('quiz_score', 'desc')->limit(3)->get();
         $period = $this->get_current_period();
         foreach($winners as $winner) {
@@ -53,6 +53,14 @@ class AddWinners extends Command
 
             $winner_period->save();
          }
+        
+        //reset all participants score, so they can play again in the next period
+        $participants = User::all();
+        foreach($participants as $participant) {
+            $participant->quiz_score = 0;
+            $participant->save();
+        }
+        
     }
     
     public function get_current_period() {
