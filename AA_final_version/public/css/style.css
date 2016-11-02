@@ -1,0 +1,535 @@
+html, body {
+    margin: 0;
+    font-size: 100%;
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* ausopen blue: #0091d2 */
+
+
+header {
+    background-color: #eee;
+    padding: 5px;
+}
+
+header div:first-child {
+    float: left;
+}
+
+header div+div {
+    float: right;
+}
+
+header img {
+    width: 50px;
+    height: auto;
+}
+
+.wrapper {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+footer {
+    background-color: #006a9a;
+    color: #fff;
+    text-align: center;
+}
+
+
+h1 {
+    color: #0091d2;
+}
+
+.nav.navbar-nav .dropdown .dropdown-toggle.welcome {
+    padding: 0;
+    padding-top: 5px;
+    padding-right: 20px;
+}
+
+a.call_to_action {
+    border: none;
+    background-color: #0091d2;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+a.call_to_action:hover {
+    background-color: #f7981d;
+}
+
+.account_yet {
+    margin-top: 10px;
+}
+
+
+.winners {
+    margin-top: 25px;
+    /*background-color: #9dd4c1;*/
+}
+
+.winners div .winner {
+    width: 30%;
+    height: auto;
+    margin-right: 5%;
+    float: left;
+}
+
+.winners div .winner:nth-child(3n+3) {
+    margin-right: 0;
+}
+
+.winners div .winner .img {
+    height: 240px;
+    overflow: hidden;
+    -webkit-clip-path: circle(45% at 50% 50%);
+    clip-path: circle(45% at 50% 50%);
+}
+
+.winners div div img {
+    width: 100%;
+    height: auto; /*dit zou eigenlijk op auto moeten staan*/
+    
+}
+
+.winners .winner_caption {
+    width: 100%;
+}
+
+.rules,
+.faq {
+    margin-top: 25px;
+}
+
+.rules strong {
+    color: #f7981d;
+}
+
+.faq {
+    border-top: #eee 1px solid;
+}
+
+.faq div {
+    text-align: left;
+}
+
+.faq .question {
+    margin-top: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.register_form label {
+    width: 25%;
+}
+
+.register_form input {
+    width: 74.2%;
+    padding: 2px 5px;
+}
+
+.register_form input[type="file"] {
+    display: inline;
+}
+
+.register_form button[type="submit"] {
+    width: 100%;
+    background-color: #0091d2;
+    color: #fff;
+    border: none;
+}
+
+.register_form button[type="submit"]:hover {
+    background-color: #f7981d;
+}
+
+
+
+/* logged in */
+
+
+
+.navbar-brand img {
+    width: 50px;
+    height: auto;
+}
+
+/* extra nav */
+ul.nav_extra {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.nav_extra li {
+    float: left;
+    width: 24.99%;
+    border-right: 1px solid #00a7f2;
+    text-align: center;
+}
+
+ul.nav_extra.admin li {
+    width: 19.99%;
+}
+
+ul.nav_extra li:last-child {
+    border-right: none;
+}
+
+ul.nav_extra li a {
+    display: block;
+    width: 100%;
+}
+
+ul.nav_extra li a.active,
+ul.nav_extra li a:hover {
+    background-color: #0091d2;
+    color: #fff;
+    text-decoration: none
+}
+
+
+
+/* quiz */
+
+.question img {
+    width: 100%;
+    height: auto;
+}
+
+/*
+.question .answers input {
+    display: none;
+}
+
+.question .answers label {
+    width: 100%;
+    background-color: #eee;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.question .answers input[type="radio"]:checked+label {
+    background-color: #0091d2;
+    color: #fff;
+}
+*/
+
+.question .question {
+    font-weight: bold;
+}
+
+.question .answers div {
+    margin-bottom: 1px;
+}
+
+.question .answers button {
+    width: 100%;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.question .answers button:hover {
+    background-color: #0091d2;
+    color: #fff;
+}
+
+
+/* user_info */
+
+.user_info form input,
+.user_info form label {
+    float: left;
+}
+
+.user_info form div {
+    margin-bottom: 15px;
+}
+
+.user_info form label {
+    width: 120px;
+    margin-right: 20px;
+}
+
+.user_info form input {
+    width: 220px;
+    padding: 0px 5px;
+}
+
+.user_info form input[type="submit"] {
+    width: 100%;
+    background-color: #0091d2;
+    color: #fff;
+    border: none;
+}
+
+.user_info form input[type="submit"]:hover {
+    background-color: #f7981d;
+}
+
+.user_info div img {
+    width: 100%;
+    height: auto;
+    -webkit-clip-path: circle(48% at 50% 50%);
+    clip-path: circle(48% at 50% 50%);
+}
+
+.user_info .score {
+    margin-top: 25px;
+    text-align: center;
+    border: 1px #d3e0e9 solid;
+    border-radius: 5px;
+}
+
+.user_info .score .amount {
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+/* admin */
+
+.msg_info {
+    background-color: #8ce6a8;
+    padding: 2px 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* participant_info */
+
+.participant div .info {
+    padding: 2px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.participant div div:hover {
+    background-color: #f5f5f5;
+}
+
+.participant div div div {
+    float: left;
+}
+
+.participant div div div:first-child {
+    width: 150px;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+#update_period div {
+    margin-bottom: 5px;
+}
+
+#update_period div label {
+    width: 20%;
+}
+
+#update_period div input {
+    border: 1px #d3e0e9 solid;
+    padding: 2px 5px;
+    width: 28.5%;
+}
+
+#update_period div input+input {
+    width: 20%;
+}
+
+#update_period div input[type="submit"] {
+    width: 70%;
+    background-color: #0091d2;
+    color: #fff;
+}
+
+
+/* edit question */
+.add_question label,
+.edit_question label {
+    width: 25%;
+}
+
+.add_question form div,
+.edit_question form div {
+    margin-bottom: 5px;
+}
+
+.add_question input,
+.add_question select,
+.edit_question input,
+.edit_question select {
+    width: 65%;
+    padding: 2px 5px;
+    border: 1px #d3e0e9 solid;
+}
+
+.add_question select,
+.edit_question select {
+    width: 25%;
+}
+
+.add_question input[type="radio"],
+.edit_question input[type="radio"] {
+    width: 5%;
+}
+
+.add_question input[type="file"],
+.edit_question input[type="file"] {
+    display: inline;
+}
+
+.add_question input[name="question"],
+.add_question input[type="file"],
+.edit_question input[name="question"],
+.edit_question input[type="file"] {
+    width: 70%;
+}
+
+.add_question div input[type="submit"], 
+.edit_question div input[type="submit"] {
+    width: 95%;
+    background-color: #0091d2;
+    color: #fff;
+}
+
+.add_question div input[type="submit"]:hover, 
+.edit_question div input[type="submit"]:hover {
+    background-color: #f7981d;
+}
+
+.edit_question .delete_question {
+    display: block;
+    width: 95%;
+    border: 1px #d99 solid;
+    color: #d99;
+    text-align: center;
+}
+
+.edit_question .delete_question:hover {
+    text-decoration: none;
+    background-color: #fbb;
+    color: #b55;
+}
+
+
+/* CLEARFIX */
+
+header::before, header::after,
+.winners div::before, .winners div::after,
+ul.nav_extra::before, ul.nav_extra::after,
+.user_info form div::before, .user_info form div::after,
+.participant div div::before, .participant div div::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+header::after,
+.winners div::after,
+ul.nav_extra::after,
+.user_info form div::after,
+.participant div div::after {
+    clear: both;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .winners div .winner .img {
+        height: 160px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    
+    .nav.navbar-nav.navbar-right {
+        width: 120px;
+        float: right;
+    }
+    
+    .winners div .winner .img {
+        height: 120px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .winners div .winner .img {
+        height: 100px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
+    
+    /* logged in */
+    ul.nav_extra li {
+        float: none;
+        clear: both;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #00a7f2;
+    }
+    
+    ul.nav_extra.admin li {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
+    
+    ul.nav_extra li a {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .winners div .winner .img {
+        height: 80px;
+        overflow: hidden;
+        -webkit-clip-path: circle(45% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+    }
+    
+    #update_period div label {
+        width: 100%;
+    }
+    
+    #update_period div input {
+        width: 100%;
+    }
+    
+    #update_period div input+input {
+        width: 100%;
+    }
+}
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

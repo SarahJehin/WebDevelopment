@@ -1,7 +1,3 @@
-# OPMERKING
-Het eerste project (alles wat hierboven staat) is werkte niet meer na een probleem op 1 november.
-Dus heb ik voor zekerheid de finale versie van de code in de map AA_final_version gezet.
-
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
